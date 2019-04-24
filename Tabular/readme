@@ -1,0 +1,6 @@
+Discrete Scenario
+
+Tabular case solve with Q-Learning & SARSA.
+
+data in statistics.txt
+Run: python training.py
