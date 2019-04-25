@@ -2,3 +2,6 @@ Continuous scenario
 
 via Policy Gradient: PPO implementation adapted from https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail
 
+python training.py
+
+data in pg_data
