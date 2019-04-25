@@ -50,18 +50,18 @@ ActionNormal.probs_sum = lambda self, actions: log_prob_normal(self, actions).ex
 MultiNormal = torch.distributions.MultivariateNormal
 
 class PseudoCnt():
-    def __init__(self, num_dwell, logstd, scaler, device, v_min = 1.0, v_max = 200.0):
+    def __init__(self, num_dwell, sigma, scaler, device, v_min = 1.0, v_max = 200.0):
         super(PseudoCnt, self).__init__()
         #self.discretized_pdf = np.ones((num_dwell, bins_per_pnt)) * (1 / bins_per_pnt)
         self.pdf_mean = torch.zeros(num_dwell)
-        self.pdf_cov = torch.eye(num_dwell) * logstd
+        self.pdf_cov = torch.eye(num_dwell) * sigma
         self.pdf_mean = self.pdf_mean.to(device)
         self.pdf_cov = self.pdf_cov.to(device)
         #self.bins = bins_per_pnt
         #self.v_min = v_min
         #self.v_max = v_max
         #self.stepsize_floor = (self.v_max - self.v_min) // self.discretized_pdf.shape[1]
-        self.logstd = logstd
+        self.sigma = sigma
         self.scaler = scaler
         # for multivariate normal, the scaler for peak to reach 1.0 should be scaler of single variate normal ** num_dim
         self.num_dwell = num_dwell

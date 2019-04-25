@@ -45,8 +45,8 @@ if __name__ =="__main__":
     show_plot = True
     load_pretrain_model = False
     std_scale = 3.0
-    logstd = 3.0
-    scaler = 1.0
+    sigma = 3.0
+    beta = 1.0
     reset_pcnt = True
     using_pcnt = True
     bn_flag = 2
@@ -67,7 +67,7 @@ if __name__ =="__main__":
         agent.model.load_state_dict(state_dict, strict=False)
 
     if reset_pcnt:
-        pcnt_dist = PseudoCnt(num_dwell, logstd, scaler, device)
+        pcnt_dist = PseudoCnt(num_dwell, sigma, beta, device)
     else:
         pcnt_dist = prev_pcnt_dist
 
